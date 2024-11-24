@@ -1,12 +1,15 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import PopupDetail from "../PopupDetail/PopupDetail.jsx";
 // import { getBuoyData } from "../../actions/dataActions";
+import { iconPerson } from "../../utils/icon.js";
 
 // import { hasBuoyCam } from "../../../hasbuoycam";
 import buoyData from "../../../data/buoy.json";
+import shipData from "../../../data/ship-obs.json";
 import "./Map.css";
 
 const buoys = buoyData;
+const ships = shipData;
 
 const accessToken =
   "pk.eyJ1IjoicGpicm9mIiwiYSI6ImNqMjNvZDBraTAwMjMzMm81MWcxMjA4cjIifQ.-XXQyKK7bZW7Lg4dLJ3Suw";
@@ -50,6 +53,15 @@ const Map = () => {
                 <PopupDetail buoy={buoy} />
               </Popup>
             </Marker>
+          );
+        })}
+        {ships.map((ship, index) => {
+          return (
+            <Marker
+              icon={iconPerson}
+              key={index}
+              position={[ship.LAT, ship.LON]}
+            />
           );
         })}
       </MapContainer>

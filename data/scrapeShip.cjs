@@ -1,14 +1,21 @@
-// var Xray = require("x-ray");
-// var x = Xray();
+const fs = require("fs");
+var Xray = require("x-ray");
 
-// x("https://www.ndbc.noaa.gov/ship_obs.php?uom=E&time=1", ".wide-content", [
-//   {
-//     ship: ["span"],
-//   },
-// ]).then(function (res) {
-//   console.log(res[0].ship[1]);
-//   //res[0].ship[1]
-// });
+var x = Xray();
+
+x("https://www.ndbc.noaa.gov/ship_obs.php?uom=E&time=1", ".wide-content", [
+  {
+    ship: ["span"],
+  },
+]).then((res) => {
+  const json = [];
+  const shipArray = res[0].ship.slice(1);
+  shipArray.forEach((ship) => {
+    json.push(formatData(ship));
+  });
+
+  fs.writeFileSync(`./ship-obs.json`, JSON.stringify(json));
+});
 
 const legend = [
   "SHIP",
@@ -40,16 +47,18 @@ const legend = [
 const exampleShip =
   "SHIP     04  51.9    2.7    -     -     -     -     -  29.22 -0.11  57.7     -  55.8     -    -     -     -      -     -     -      -  ---- -----";
 
-const csv = exampleShip.replace(/ +/g, ",");
+const formatData = (report) => {
+  const csv = report.replace(/ +/g, ",");
+  const shipArray = csv.split(",");
+  const data = {};
 
-const shipArray = csv.split(",");
-
-const shipObj = shipArray.map((value, valueIndex) => {
-  legend.forEach((key, legendIndex) => {
-    if (valueIndex === legendIndex) {
-      return key: value
-    } 
+  shipArray.forEach((value, valueIndex) => {
+    legend.forEach((key, legendIndex) => {
+      if (valueIndex === legendIndex) {
+        data[key] = value;
+      }
+    });
   });
-});
 
-console.log(shipObj);
+  return data;
+};

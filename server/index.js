@@ -35,6 +35,6 @@ downloadImage(imageUrl, outputPath)
     console.error("Error downloading the image:", error);
   });
 
-// app.listen(port, () => {
-//   console.log(`Example app listening on port ${port}`);
-// });
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
+});
