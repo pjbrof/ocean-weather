@@ -1,5 +1,5 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import PopupDetail from "../PopupDetail/PopupDetail.tsx";
+import PopupDetail from "../PopupDetail/PopupDetail.jsx";
 // import { getBuoyData } from "../../actions/dataActions";
 
 // import { hasBuoyCam } from "../../../hasbuoycam";

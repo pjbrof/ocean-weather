@@ -1,5 +1,5 @@
-import Wind from "./Wind.tsx";
-import Wave from "./Wave.tsx";
+import Wind from "./Wind.jsx";
+import Wave from "./Wave.jsx";
 
 const baseURL = "https://www.ndbc.noaa.gov";
 

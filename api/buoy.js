@@ -1,5 +1,3 @@
-const axios = require("axios");
-
 export default async function handler(request, response) {
   try {
     const data = await getBuoyData();
@@ -10,14 +8,19 @@ export default async function handler(request, response) {
 }
 
 async function getBuoyData() {
-  return await axios
-    .get("https://www.ndbc.noaa.gov/data/latest_obs/latest_obs.txt")
-    .then(function (response) {
-      return parseBuoyData(response.data.toString());
-    })
-    .catch(function (err) {
-      console.log("There was an error with the request: ", err);
-    });
+  try {
+    const response = await fetch(
+      "https://www.ndbc.noaa.gov/data/latest_obs/latest_obs.txt"
+    );
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+
+    const dataStr = await response.data.toString();
+    parseBuoyData(dataStr);
+  } catch (error) {
+    console.error(error.message);
+  }
 }
 
 // module.exports = {

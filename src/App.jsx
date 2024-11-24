@@ -1,5 +1,5 @@
-import Map from "./components/Map/Map.tsx";
-import Filters from "./components/Filters/Filters.tsx";
+import Map from "./components/Map/Map.jsx";
+import Filters from "./components/Filters/Filters.jsx";
 
 const App = () => {
   return (
