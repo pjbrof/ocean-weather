@@ -1,8 +1,7 @@
 const fs = require("fs");
-const express = require("express");
 const axios = require("axios");
-const app = express();
-const port = 3000;
+const cron = require("node-cron");
+const sharp = require("./sharp");
 
 const downloadImage = async (imageUrl, outputPath) => {
   try {
@@ -23,18 +22,18 @@ const downloadImage = async (imageUrl, outputPath) => {
   }
 };
 
-// Example usage
 const imageUrl = "https://ndbc.noaa.gov/buoycam.php?station=51002";
-const outputPath = "./photos/image.jpg";
+const outputPath = "./test/image.jpg";
+
+// cron.schedule("0 * * * *", () => {
+
+// });
 
 downloadImage(imageUrl, outputPath)
   .then(() => {
     console.log("Image downloaded successfully!");
+    sharp.splitImages(outputPath);
   })
   .catch((error) => {
     console.error("Error downloading the image:", error);
   });
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
