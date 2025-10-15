@@ -1,15 +1,25 @@
 import L from "leaflet";
-import iconImage from "../img/marker-pin-person.png";
+import buoyImg from "../img/buoy.svg";
+import shipImg from "../img/ship.png";
 
-const iconPerson = new L.Icon({
-  iconUrl: iconImage,
-  iconRetinaUrl: iconImage,
-  iconAnchor: null,
-  popupAnchor: null,
+const buoyIcon = new L.Icon({
+  iconUrl: buoyImg,
   shadowUrl: null,
-  shadowSize: null,
-  shadowAnchor: null,
-  iconSize: new L.Point(20, 20),
+  iconSize: [40, 40],
+  shadowSize:   [20, 20], // size of the shadow
+  iconAnchor:   [10, 10], // point of the icon which will correspond to marker's location
+  shadowAnchor: [10, -10],  // the same for the shadow
+  popupAnchor:  [0, -5] // point from which the popup should open relative to the iconAnchor
 });
 
-export { iconPerson };
+const shipIcon = new L.Icon({
+  iconUrl: shipImg,
+  shadowUrl: null,
+  iconSize: [20, 20],
+  shadowSize:   [20, 20], // size of the shadow
+  iconAnchor:   [10, 10], // point of the icon which will correspond to marker's location
+  shadowAnchor: [10, -10],  // the same for the shadow
+  popupAnchor:  [0, -5] // point from which the popup should open relative to the iconAnchor
+});
+
+export { buoyIcon, shipIcon };

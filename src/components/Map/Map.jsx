@@ -1,7 +1,7 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import PopupDetail from "../PopupDetail/PopupDetail.jsx";
 // import { getBuoyData } from "../../actions/dataActions";
-import { iconPerson } from "../../utils/icon.js";
+import { buoyIcon, shipIcon } from "../../utils/icon.js";
 
 // import { hasBuoyCam } from "../../../hasbuoycam";
 import buoyData from "../../../data/buoy.json";
@@ -48,7 +48,7 @@ const Map = () => {
         />
         {buoys.map((buoy) => {
           return (
-            <Marker key={buoy.STN} position={[buoy.LAT, buoy.LON]}>
+            <Marker icon={buoyIcon} key={buoy.STN} position={[buoy.LAT, buoy.LON]}>
               <Popup>
                 <PopupDetail buoy={buoy} />
               </Popup>
@@ -58,10 +58,16 @@ const Map = () => {
         {ships.map((ship, index) => {
           return (
             <Marker
-              icon={iconPerson}
+              icon={shipIcon}
               key={index}
               position={[ship.LAT, ship.LON]}
-            />
+            >
+              <Popup>
+                <div>Wind Speed: {ship.WSPD}</div>
+                <div>Wind Direction: {ship.WDIR}</div>
+                <div>Pressure mmHg: {ship.PRES}</div>
+              </Popup>
+            </Marker>
           );
         })}
       </MapContainer>

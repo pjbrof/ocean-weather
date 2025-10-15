@@ -1,0 +1,28 @@
+<svg width="330" height="568" viewBox="0 0 330 568" fill="none" xmlns="http://www.w3.org/2000/svg">
+<line x1="94" y1="115" x2="235" y2="115" stroke="black" stroke-width="14"/>
+<line x1="52.0607" y1="69.9393" x2="95.0607" y2="112.939" stroke="black" stroke-width="3"/>
+<line x1="234.025" y1="113.282" x2="277.367" y2="69.9393" stroke="black" stroke-width="3"/>
+<path d="M102.5 113L60 65H276L226.5 113" stroke="black" stroke-width="15" stroke-linecap="square" stroke-linejoin="bevel"/>
+<line x1="95.4822" y1="113.231" x2="39.4822" y2="473.231" stroke="black" stroke-width="3"/>
+<line x1="108.482" y1="113.23" x2="52.4823" y2="474.23" stroke="black" stroke-width="3"/>
+<line y1="-1.5" x2="364.33" y2="-1.5" transform="matrix(0.153707 0.988116 0.988116 -0.153707 235 113)" stroke="black" stroke-width="3"/>
+<line y1="-1.5" x2="364.33" y2="-1.5" transform="matrix(0.153707 0.988116 0.988116 -0.153707 221 113)" stroke="black" stroke-width="3"/>
+<line x1="79" y1="217.5" x2="250" y2="217.5" stroke="black" stroke-width="3"/>
+<line x1="77" y1="229.5" x2="252" y2="229.5" stroke="black" stroke-width="3"/>
+<line x1="53" y1="388.5" x2="277" y2="388.5" stroke="black" stroke-width="3"/>
+<line x1="54" y1="376.5" x2="275" y2="376.5" stroke="black" stroke-width="3"/>
+<mask id="path-13-inside-1_34_113" fill="white">
+<rect y="473" width="330" height="95" rx="10"/>
+</mask>
+<rect y="473" width="330" height="95" rx="10" stroke="black" stroke-width="30" mask="url(#path-13-inside-1_34_113)"/>
+<rect x="42.5" y="56.5" width="250" height="13" rx="4.5" fill="black" stroke="black" stroke-width="3"/>
+<mask id="path-15-inside-2_34_113" fill="white">
+<path d="M132 15C132 6.71573 138.716 0 147 0H182C190.284 0 197 6.71573 197 15V55H132V15Z"/>
+</mask>
+<path d="M120 15C120 0.0883118 132.088 -12 147 -12H182C196.912 -12 209 0.0883118 209 15H185C185 13.3431 183.657 12 182 12H147C145.343 12 144 13.3431 144 15H120ZM197 55H132H197ZM120 55V15C120 0.0883118 132.088 -12 147 -12V12C145.343 12 144 13.3431 144 15V55H120ZM182 -12C196.912 -12 209 0.0883118 209 15V55H185V15C185 13.3431 183.657 12 182 12V-12Z" fill="black" mask="url(#path-15-inside-2_34_113)"/>
+<path d="M56.5 385.5L245.5 222.5" stroke="black" stroke-width="9" stroke-linecap="round"/>
+<path d="M83.5 222L272.5 385.5" stroke="black" stroke-width="9" stroke-linecap="round"/>
+<path d="M47 469L102 118" stroke="black" stroke-width="12" stroke-linecap="square"/>
+<path d="M283 480L228 119" stroke="black" stroke-width="12" stroke-linecap="square"/>
+<path d="M86.5 223.5H242L62 382.5H267L86.5 223.5Z" stroke="black" stroke-width="15" stroke-linecap="square" stroke-linejoin="bevel"/>
+</svg>
