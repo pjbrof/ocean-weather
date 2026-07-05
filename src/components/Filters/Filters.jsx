@@ -1,14 +1,22 @@
-import "./Filters.css";
-import Checkbox from './Checkbox';
+import { useSelector } from "react-redux";
 import { useGetPokemonByNameQuery } from '../../services/buoys';
+import Checkbox from './Checkbox';
+
+import "./Filters.css";
 
 const Filters = () => {
-
   const { data, error, isLoading } = useGetPokemonByNameQuery('bulbasaur');
+
+  const buoys = useSelector((state) => state.filter.buoys);
 
   const handleWaterTemp = (e) => {
     e.preventDefault();
     console.log(e.target.value);
+  };
+
+  const toggleBuoys = (label, active) => {
+    console.log('label?', label);
+    console.log('active?', active);
   };
 
   return (
@@ -22,9 +30,9 @@ const Filters = () => {
         <div className="px-4 py-4">
           <fieldset className="space-y-5">
             <legend className="sr-only">Filters</legend>
-            <Checkbox label="Buoys" />
-            <Checkbox label="BuoyCAM" description="has buoy camera equipped." />
-            <Checkbox label="Boats" />
+            <Checkbox label="Buoys" onChange={(label, active) => toggleBuoys(label, active)} />
+            <Checkbox label="BuoyCAM" description="has buoy camera equipped." onChange={(label, active) => toggleBuoys(label, active)} />
+            <Checkbox label="Boats" onChange={(label, active) => toggleBuoys(label, active)} />
             <div>
               <label
                 htmlFor="waterTemp"

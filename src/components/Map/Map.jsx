@@ -1,61 +1,38 @@
+import { useSelector } from "react-redux";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import MarkerClusterGroup from "react-leaflet-cluster";
 import PopupDetail from "../PopupDetail/PopupDetail.jsx";
-// import { getBuoyData } from "../../actions/dataActions";
 import { buoyIcon, shipIcon } from "../../utils/icon.js";
 
-// import { hasBuoyCam } from "../../../hasbuoycam";
-import buoyData from "../../../data/buoy.json";
-import shipData from "../../../data/ship-obs.json";
 import "./Map.css";
+import "leaflet/dist/leaflet.css";
+import "leaflet.markercluster/dist/MarkerCluster.css";
+import "leaflet.markercluster/dist/MarkerCluster.Default.css";
 
-const buoys = buoyData;
-const ships = shipData;
-
-const accessToken =
-  "pk.eyJ1IjoicGpicm9mIiwiYSI6ImNqMjNvZDBraTAwMjMzMm81MWcxMjA4cjIifQ.-XXQyKK7bZW7Lg4dLJ3Suw";
-// const buoyCAM = false;
-
-// const filterUndefined = (buoy) => {
-//   if (buoy.LAT === undefined) {
-//     return false;
-//   }
-//   return true;
-// };
-
-// const filterBuoyCAM = (buoy) => {
-//   return hasBuoyCam.some((cam) => {
-//     return buoy.STN === cam;
-//   });
-// };
-
-// const applyFilters = (filters = { undef: true, cam: true }, item) => {
-//   if (filters.undef) {
-//     return filterUndefined(item);
-//   }
-// };
 
 const Map = () => {
-  // useEffect(() => {
-  //   getBuoyData();
-  // }, []);
+  const buoys = useSelector((state) => state.filter.buoys);
+  const ships = useSelector((state) => state.filter.ships);
 
   return (
     <>
       <MapContainer center={[40, -113]} zoom={4}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url={`https://api.mapbox.com/styles/v1/pjbrof/ckzeqwsw9001014mrha37jqib/tiles/256/{z}/{x}/{y}?access_token=${accessToken}`}
+          url={`https://api.mapbox.com/styles/v1/pjbrof/ckzeqwsw9001014mrha37jqib/tiles/256/{z}/{x}/{y}?access_token=${import.meta.env.VITE_MAPBOX_API_KEY}`}
         />
-        {buoys.map((buoy) => {
-          return (
-            <Marker icon={buoyIcon} key={buoy.STN} position={[buoy.LAT, buoy.LON]}>
-              <Popup>
-                <PopupDetail buoy={buoy} />
-              </Popup>
-            </Marker>
-          );
-        })}
-        {ships.map((ship, index) => {
+        <MarkerClusterGroup chunkedLoading>
+          {buoys?.map((buoy) => {
+            return (
+              <Marker icon={buoyIcon} key={buoy.STN} position={[buoy.LAT, buoy.LON]}>
+                <Popup>
+                  <PopupDetail buoy={buoy} />
+                </Popup>
+              </Marker>
+            );
+          })}
+        </MarkerClusterGroup>
+        {/* {ships?.map((ship, index) => {
           return (
             <Marker
               icon={shipIcon}
@@ -69,7 +46,7 @@ const Map = () => {
               </Popup>
             </Marker>
           );
-        })}
+        })} */}
       </MapContainer>
     </>
   );

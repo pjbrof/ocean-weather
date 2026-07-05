@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
 import { pokemonApi } from './services/buoys'
+import filterReducer from './components/Filters/filterSlice';
 
 export const store = configureStore({
   reducer: {
     // Add the generated reducer as a specific top-level slice
+    filter: filterReducer,
     [pokemonApi.reducerPath]: pokemonApi.reducer,
   },
   // Adding the api middleware enables caching, invalidation, polling,
